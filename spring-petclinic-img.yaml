@@ -1,0 +1,7 @@
+team: kwan-team
+source:
+  git:
+    url: https://github.com/kathywan/spring-petclinic
+    revision: master
+image:
+  tag: kathywan/spring-petclinic-image

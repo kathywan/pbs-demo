@@ -1,0 +1,9 @@
+name: kwan-team
+registries:
+- registry: https://index.docker.io/v1/
+  username: kathywan
+  password: <REDACTED>
+repositories:
+- domain: github.com
+  username: kathywan
+  password: <REDACTED>
