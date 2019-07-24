@@ -26,3 +26,12 @@ kubectl get builders --all-namespaces -o json | jq ".items | .[0].spec.image”
 
 //webhook API call from image registry 
 curl -v -X POST https://build-service.cupertino.cf-app.com/v1/docker/webhook -H "Content-Type: application/json" -d '{ "push_data": { "tag": "latest" }, "repository": { "repo_name": "docker.io/kathywan/cf-build-service-dev-219913-build-service-builders-p-builder-08a87070945c7177ae30c35d16d0f4ed" } }' -k
+
+//use script to update builder image and trigger webhook through api call (I need to use this because of self-signed cert I used with installing PBS. Docker can only work with webhook API which used CA authrized cert. In that case, you can easily add this to your registry repository)
+
+../update-builder.sh 7 
+//above will update builder image that has openJDK 11.0.2 buildpack. Image building should be triggered automatically
+
+../update-builder.sh 8
+//above will update builder image that has openJDK 11.0.2 buildpack. Image building should be triggered automatically
+
