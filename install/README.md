@@ -31,33 +31,6 @@ kubectl apply -f deployments/ingress-controller/nginx-ingress.yaml
 ```
 kubectl apply -f nginx-ingress-svc.yaml
 ```
-or
-```
-cat << EOF| kubectl create -f -
-kind: Service
-apiVersion: v1
-metadata:
-  name: ingress-nginx
-  namespace: ingress-nginx
-  labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
-spec:
-  loadBalancerIP: 104.154.160.254 #pre-create a static IP only
-  externalTrafficPolicy: Local
-  type: LoadBalancer
-  selector:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
-  ports:
-    - name: http
-      port: 80
-      targetPort: http
-    - name: https
-      port: 443
-      targetPort: https
-EOF
-```
 
 - Create cert for PBS
 ```
