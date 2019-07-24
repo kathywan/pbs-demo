@@ -1,4 +1,4 @@
-## Install PBS on UAA
+## Install PBS on PKS 
 
 - Used toolsmith to get a PKS env on my GCP account
 - Created a cluster `pbcluster`
@@ -36,6 +36,8 @@ kubectl apply -f nginx-ingress-svc.yaml
 ```
 openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out cert.crt -keyout key.key
 ```
+NOTES: For MacOS, when using pb cli the CA certificate should be added to the keychain and the Trust setting must be changed to Always Trust instead of Use System Defaults
+
 - Use the cert to create secret in k8s
 ```
 $ export tlsCert=$(cat /Users/qwan/workspace/pivotal-build-service/cert.crt | base64)
